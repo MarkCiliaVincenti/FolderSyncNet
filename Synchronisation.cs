@@ -19,11 +19,7 @@ namespace FolderSync
     public class AsyncLockQueueDictionary<KeyT>
         where KeyT : IComparable<KeyT>, IEquatable<KeyT>
     {
-        private readonly AsyncKeyedLocker<KeyT> LockQueueDictionary = new AsyncKeyedLocker<KeyT>(o =>
-        {
-            o.PoolSize = 20;
-            o.PoolInitialFill = 1;
-        });
+        private readonly AsyncKeyedLocker<KeyT> LockQueueDictionary = new AsyncKeyedLocker<KeyT>();
 
         private static readonly bool IsStringDictionary = typeof(KeyT) == typeof(string);
 
